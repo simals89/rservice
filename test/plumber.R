@@ -1,12 +1,11 @@
-# save as bos_rf_score.R
-
-bos_rf <- readRDS("bos_rf.rds")
-library(randomForest)
-
-#* @param df data frame of variables
-#* @post /test
-function(req, df)
-{
-    df <- as.data.frame(df)
-    predict(bos_rf, df)
+#* @get /riegel
+function(time, exponent = 1.06) {
+	# API inputs are character.
+	time = as.numeric(time)
+	exponent = as.numeric(exponent)
+	# Fixed distances.
+	distance = 5
+	goal = 42.2
+	# Calculate time for goal distance.
+	time * (goal / distance) ** exponent
 }
