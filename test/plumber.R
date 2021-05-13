@@ -1,23 +1,23 @@
-#' @apiTitle My R Service
-#' @apiDescription This service runs scalable R scripts on Google Cloud Run.
-# EXAMPLE 2
-#* Random Number from Uniform Distribution
-#* @param min Lower limit of the distribution.
-#* @param max Upper limit of the distribution.
-#* @get /runif
-#* @serializer html
-function(min = 0, max = 1){
+# Swagger docs at ...s/__swagger__/ (needs trailing slash!)
+if(Sys.getenv('PORT') == '') Sys.setenv(PORT = 8000)
+#' @apiTitle R Google Sheets Formulas
+#' @apiDescription These endpoints allow the user to create custom functions in Google spreadsheets which call R functions.
+#* Return the product of 2 matrices
+#* @param var1 An array of values representing the first matrix.
+#* @param var2 An array of values representing the second matrix.
+#* @post /myCustomFunction/
+function(var1, var2){
   
-  x <- runif(n = 1, 
-             min = as.numeric(min), 
-             max = as.numeric(max))
+  err <- tryCatch({
+    
+    return(data.matrix(var1) %*% data.matrix(var2))
+    
+  }, error = function(e) e)
   
-  paste0('<h3>', x, '</h3>')
+  return(paste0('Error: ', err$message))
 }
-# EXAMPLE 1
 #* Confirmation Message
-#* @get /testing
-#* @serializer text
+#* @get /
 function(msg=""){
-  "My R Service Deployed!"
+  "My API Deployed!"
 }
