@@ -1,7 +1,7 @@
 #* Random Number from Uniform Distribution
 #* @param min Lower limit of the distribution.
 #* @param max Upper limit of the distribution.
-#* @get /runif
+#* @get /runif/
 #* @serializer html
 function(min = 0, max = 1){
   
