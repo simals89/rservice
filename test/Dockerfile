@@ -1,10 +1,9 @@
-FROM rocker/tidyverse
-
-#### Install CRAN or Github packages not included in rocker/tidyverse container.
-RUN install2.r plumber  # Add more packages separated by spaces.
+FROM trestletech/plumber
 
 #### Copies the files in this directory to files in your container.
-COPY [".", "./"]
+RUN mkdir /test
+COPY plumber.R /test
+WORKDIR /test
 
 #### This starts your R-powered service.
 EXPOSE 8080
