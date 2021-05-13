@@ -1,17 +1,12 @@
-# example Dockerfile to expose a plumber service
+FROM rocker/tidyverse
 
-FROM trestletech/plumber
+#### Install CRAN or Github packages not included in rocker/tidyverse container.
+RUN install2.r plumber  # Add more packages separated by spaces.
 
-# install the randomForest package
-RUN R -e 'install.packages(c("randomForest"))'
+#### Copies the files in this directory to files in your container.
+COPY [".", "./"]
 
-# copy model and scoring script
-RUN mkdir /test
-COPY bos_rf.rds /test
-COPY bos_rf_score.R /test
-WORKDIR /test
+#### This starts your R-powered service.
+ENTRYPOINT ["Rscript", "-e", "pr <- plumber::plumb('/test/plumber.R'); pr$run(host='0.0.0.0', port=8080)"]
 
-# plumb and run server
-EXPOSE 8080
-ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/test/bos_rf_score.R'); pr$run(host='0.0.0.0', port=8080)"]
+CMD ["plumber.R"]
