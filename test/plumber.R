@@ -6,8 +6,8 @@ if(Sys.getenv('PORT') == '') Sys.setenv(PORT = 8000)
 #* @param var1 An array of values representing the first matrix.
 #* @param var2 An array of values representing the second matrix.
 #* @post /myCustomFunction
-function(var1, var2){
-  return(var1 + var2) 
+function(bla){
+  return(bla) 
 }
 #* Confirmation Message
 #* @get /
