@@ -1,35 +1,23 @@
-#
-# This is a Plumber API. You can run the API by clicking
-# the 'Run API' button above.
-#
-# Find out more about building APIs with Plumber here:
-#
-#    https://www.rplumber.io/
-#
-
-library(plumber)
-
-#* @apiTitle Plumber Example API
-
-#* Echo back the input
-#* @param msg The message to echo
-#* @get /echo
-function(msg = "") {
-    list(msg = paste0("The message is: '", msg, "'"))
+# Swagger docs at ...s/__swagger__/ (needs trailing slash!)
+if(Sys.getenv('PORT') == '') Sys.setenv(PORT = 8000)
+#' @apiTitle R Google Sheets Formulas
+#' @apiDescription These endpoints allow the user to create custom functions in Google spreadsheets which call R functions.
+#* Return the product of 2 matrices
+#* @param var1 An array of values representing the first matrix.
+#* @param var2 An array of values representing the second matrix.
+#* @post /myCustomFunction/
+function(var1, var2){
+  
+  err <- tryCatch({
+    
+    return(data.matrix(var1) %*% data.matrix(var2))
+    
+  }, error = function(e) e)
+  
+  return(paste0('Error: ', err$message))
 }
-
-#* Plot a histogram
-#* @png
-#* @get /plot
-function() {
-    rand <- rnorm(100)
-    hist(rand)
-}
-
-#* Return the sum of two numbers
-#* @param a The first number to add
-#* @param b The second number to add
-#* @post /sum
-function(a, b) {
-    as.numeric(a) + as.numeric(b)
+#* Confirmation Message
+#* @get /
+function(msg=""){
+  "My API Deployed!"
 }
