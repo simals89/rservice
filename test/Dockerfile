@@ -9,6 +9,7 @@ RUN R -e 'install.packages(c("randomForest"))'
 RUN mkdir /test
 COPY bos_rf.rds /test
 COPY bos_rf_score.R /test
+COPY plumber.R /test
 WORKDIR /test
 
 # plumb and run server
