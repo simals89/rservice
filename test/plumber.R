@@ -12,7 +12,7 @@ function(min = 0, max = 1){
              min = as.numeric(min), 
              max = as.numeric(max))
   
-  plot(x)
+  print(plot(x))
 
 }
 # EXAMPLE 1
