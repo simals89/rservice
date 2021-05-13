@@ -1,13 +1,17 @@
+# example Dockerfile to expose a plumber service
+
 FROM trestletech/plumber
 
-#### Copies the files in this directory to files in your container.
+# install the randomForest package
+RUN R -e 'install.packages(c("randomForest"))'
+
+# copy model and scoring script
 RUN mkdir /test
-COPY plumber.R /test
+COPY bos_rf.rds /test
+COPY bos_rf_score.R /test
 WORKDIR /test
 
-#### This starts your R-powered service.
+# plumb and run server
 EXPOSE 8080
 ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/test/plumber.R'); pr$run(host='0.0.0.0', port=8080)"]
-
-CMD ["plumber.R"]
+    "pr <- plumber::plumb('/test/bos_rf_score.R'); pr$run(host='0.0.0.0', port=8080)"]
