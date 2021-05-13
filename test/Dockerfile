@@ -6,12 +6,12 @@ FROM trestletech/plumber
 RUN R -e 'install.packages(c("randomForest"))'
 
 # copy model and scoring script
-RUN mkdir /data
+RUN mkdir /test
 COPY bos_rf.rds /data
 COPY bos_rf_score.R /data
-WORKDIR /data
+WORKDIR /test
 
 # plumb and run server
 EXPOSE 8000
 ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/data/bos_rf_score.R'); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT')))"]
+    "pr <- plumber::plumb('/test/bos_rf_score.R'); pr$run(host='0.0.0.0', port=8000)"]
