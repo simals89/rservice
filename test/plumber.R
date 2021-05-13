@@ -1,23 +1,12 @@
-# Swagger docs at ...s/__swagger__/ (needs trailing slash!)
-if(Sys.getenv('PORT') == '') Sys.setenv(PORT = 8000)
-#' @apiTitle R Google Sheets Formulas
-#' @apiDescription These endpoints allow the user to create custom functions in Google spreadsheets which call R functions.
-#* Return the product of 2 matrices
-#* @param var1 An array of values representing the first matrix.
-#* @param var2 An array of values representing the second matrix.
-#* @post /myCustomFunction/
-function(var1, var2){
-  
-  err <- tryCatch({
-    
-    return(data.matrix(var1) %*% data.matrix(var2))
-    
-  }, error = function(e) e)
-  
-  return(paste0('Error: ', err$message))
-}
-#* Confirmation Message
-#* @get /
-function(msg=""){
-  "My API Deployed!"
+# save as bos_rf_score.R
+
+bos_rf <- readRDS("bos_rf.rds")
+library(randomForest)
+
+#* @param df data frame of variables
+#* @post /score
+function(req, df)
+{
+    df <- as.data.frame(df)
+    predict(bos_rf, df)
 }
