@@ -13,6 +13,6 @@ COPY plumber.R /test
 WORKDIR /test
 
 # plumb and run server
-EXPOSE 8080
+EXPOSE 8000
 ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/test/plumber.R'); pr$run(host='0.0.0.0', port=8080)"]
+    "pr <- plumber::plumb('/test/plumber.R'); pr$run(host='0.0.0.0', port=8000)"]
