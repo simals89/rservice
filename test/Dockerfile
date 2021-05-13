@@ -15,4 +15,4 @@ WORKDIR /test
 # plumb and run server
 EXPOSE 8080
 ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/test/bos_rf_score.R'); pr$run(host='0.0.0.0', port=8080)"]
+    "pr <- plumber::plumb('/test/plumber.R'); pr$run(host='0.0.0.0', port=8080)"]
