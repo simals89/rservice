@@ -8,11 +8,12 @@
 #* @serializer html
 function(min = 0, max = 1){
   
-  x <- runif(n = 1, 
+  x <- runif(n = 40, 
              min = as.numeric(min), 
              max = as.numeric(max))
   
-  paste0(x)
+  plot(x)
+
 }
 # EXAMPLE 1
 #* Confirmation Message
