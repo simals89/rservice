@@ -1,18 +1,16 @@
-# example Dockerfile to expose a plumber service
+FROM rocker/r-ver:3.5.2
 
-FROM trestletech/plumber
+RUN	apt-get update -qq && \
+	apt-get install -y \
+	pandoc \
+	libssl-dev \
+	libcurl4-gnutls-dev \
+	libxml2-dev
 
-# install the randomForest package
-RUN R -e 'install.packages(c("randomForest"))'
+RUN R -e "install.packages(c('plumber', 'dplyr', 'plotly'))"
 
-# copy model and scoring script
-RUN mkdir /test
-COPY bos_rf.rds /test
-COPY bos_rf_score.R /test
-COPY plumber.R /test
-WORKDIR /test
+COPY plumber.R plumber.R
 
-# plumb and run server
 EXPOSE 8000
-ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/test/plumber.R'); pr$run(host='0.0.0.0', port=8000)"]
+
+ENTRYPOINT ["R", "-e", "library(plumber); plumb('plumber.R')$run(port=8000, host='0.0.0.0')"]
