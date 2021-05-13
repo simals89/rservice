@@ -5,7 +5,7 @@ if(Sys.getenv('PORT') == '') Sys.setenv(PORT = 8000)
 #* Return the product of 2 matrices
 #* @param var1 An array of values representing the first matrix.
 #* @param var2 An array of values representing the second matrix.
-#* @post /myCustomFunction/
+#* @post /myCustomFunction
 function(var1, var2){
   
   err <- tryCatch({
