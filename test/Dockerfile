@@ -12,6 +12,6 @@ COPY bos_rf_score.R /test
 WORKDIR /test
 
 # plumb and run server
-EXPOSE 8000
+EXPOSE 8080
 ENTRYPOINT ["R", "-e", \
-    "pr <- plumber::plumb('/test/bos_rf_score.R'); pr$run(host='0.0.0.0', port=8000)"]
+    "pr <- plumber::plumb('/test/bos_rf_score.R'); pr$run(host='0.0.0.0', port=8080)"]
