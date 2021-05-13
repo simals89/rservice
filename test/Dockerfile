@@ -7,8 +7,8 @@ RUN R -e 'install.packages(c("randomForest"))'
 
 # copy model and scoring script
 RUN mkdir /test
-COPY bos_rf.rds /data
-COPY bos_rf_score.R /data
+COPY bos_rf.rds /test
+COPY bos_rf_score.R /test
 WORKDIR /test
 
 # plumb and run server
