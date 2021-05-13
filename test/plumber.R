@@ -1,13 +1,5 @@
 #' @apiTitle My R Service
-#' @apiDescription This service runs R scripts on Google Cloud Run.
-# EXAMPLE 3
-#* iris datatable
-#* @get /iris
-#* @serializer htmlwidget
-function(){
-  
-  DT::datatable(iris)
-}
+#' @apiDescription This service runs scalable R scripts on Google Cloud Run.
 # EXAMPLE 2
 #* Random Number from Uniform Distribution
 #* @param min Lower limit of the distribution.
