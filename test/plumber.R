@@ -1,15 +1,13 @@
-# Swagger docs at ...s/__swagger__/ (needs trailing slash!)
-if(Sys.getenv('PORT') == '') Sys.setenv(PORT = 8000)
-#' @apiTitle R Google Sheets Formulas
-#' @apiDescription These endpoints allow the user to create custom functions in Google spreadsheets which call R functions.
-#* Return the product of 2 matrices
-#* @param bla A number.
-#* @post /myCustomFunction
-function(bla){
-  return(bla) 
-}
-#* Confirmation Message
-#* @get /
-function(msg=""){
-  "My API Deployed!"
+#* Random Number from Uniform Distribution
+#* @param min Lower limit of the distribution.
+#* @param max Upper limit of the distribution.
+#* @get /runif
+#* @serializer html
+function(min = 0, max = 1){
+  
+  x <- runif(n = 1, 
+             min = as.numeric(min), 
+             max = as.numeric(max))
+  
+  return(paste0('<h3>', x, '</h3>'))
 }
