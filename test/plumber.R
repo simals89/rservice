@@ -12,7 +12,7 @@ function(min = 0, max = 1){
              min = as.numeric(min), 
              max = as.numeric(max))
   
-  return(x)
+  paste0(x)
 }
 # EXAMPLE 1
 #* Confirmation Message
