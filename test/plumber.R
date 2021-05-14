@@ -36,7 +36,7 @@ function(msg=""){
 #* @png
 function(data = '[[1.0], [4.0], [3.0]]'){
   
-  x <- as.vector(jsonlite::fromJSON(json))
+  x <- as.vector(jsonlite::fromJSON(data))
   
   df <- data.frame(obs = c(1:3), x)
   
