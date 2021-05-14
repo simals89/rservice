@@ -34,14 +34,14 @@ function(msg=""){
 #* @param data Data
 #* @get /plot
 #* @png
-function(var1 = NA, var2 = NA){
+function(chartTitle = NA, var1 = NA, var2 = NA){
   
   x <- as.numeric(unlist(strsplit(var1, ",")))
   y <- as.numeric(unlist(strsplit(var2, ",")))
   
   df <- data.frame(x, y)
   
-  print(ggplot2::ggplot(data = df, aes(x, y)) + geom_point())
+  print(ggplot2::ggplot(data = df, aes(x, y)) + geom_point() + ggtitle(chartTitle) + theme_minimal())
 }
 
 
