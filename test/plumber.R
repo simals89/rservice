@@ -48,6 +48,7 @@ function(data = '[[1.0], [4.0], [3.0]]'){
 #* Confirmation Message
 #* @get /hejsan
 #* @serializer print
-function(msg=c(1,4,8)){ 
+function(msg=c(1,4,8)){
+  msg <- as.vector(jsonlite::fromJSON(data))
   print(msg)
 }
