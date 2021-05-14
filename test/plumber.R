@@ -37,7 +37,7 @@ function(msg=""){
 function(data = NA){
   
   #x <- as.vector(jsonlite::fromJSON(data))
-  x <- data
+  x <- c(data)
   
   df <- data.frame(obs = c(1:3), x)
   
