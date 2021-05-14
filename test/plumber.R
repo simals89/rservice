@@ -36,8 +36,7 @@ function(msg=""){
 #* @png
 function(data = NA){
   
-  #x <- as.vector(jsonlite::fromJSON(data))
-  x <- c(data)
+  x <- as.numeric(unlist(strsplit(data, ",")))
   
   df <- data.frame(obs = c(1:3), x)
   
@@ -49,7 +48,7 @@ function(data = NA){
 #* Confirmation Message
 #* @get /hejsan
 #* @serializer print
-function(msg=c(1,4,8)){
-  msg <- as.vector(jsonlite::fromJSON(data))
-  print(msg)
+function(data = NA){
+  x <- as.numeric(unlist(strsplit(data, ",")))
+  print(paste(x, collapse = " "))
 }
