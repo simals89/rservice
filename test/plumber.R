@@ -47,7 +47,7 @@ function(data = '[[1.0], [4.0], [3.0]]'){
 # EXAMPLE 4
 #* Confirmation Message
 #* @get /hejsan
-#* @serializer text
+#* @serializer print
 function(msg=c(1,4,8)){ 
   print(msg)
 }
