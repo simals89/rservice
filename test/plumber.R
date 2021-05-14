@@ -34,9 +34,10 @@ function(msg=""){
 #* @param data Data
 #* @get /plot
 #* @png
-function(data = '[[1.0], [4.0], [3.0]]'){
+function(data = NA){
   
-  x <- as.vector(jsonlite::fromJSON(data))
+  #x <- as.vector(jsonlite::fromJSON(data))
+  x <- data
   
   df <- data.frame(obs = c(1:3), x)
   
