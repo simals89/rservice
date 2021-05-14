@@ -42,3 +42,13 @@ function(data = '[[1.0], [4.0], [3.0]]'){
   
   print(ggplot2::ggplot(data = df, aes(obs, x)) + geom_point())
 }
+
+
+# EXAMPLE 4
+#* Confirmation Message
+#* @get /hejsan
+#* @serializer text
+function(msg=""){
+  msg <- c(1,4,8)
+  print(msg)
+}
