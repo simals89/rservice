@@ -34,13 +34,14 @@ function(msg=""){
 #* @param data Data
 #* @get /plot
 #* @png
-function(data = NA){
+function(var1 = NA, var2 = NA){
   
-  x <- as.numeric(unlist(strsplit(data, ",")))
+  x <- as.numeric(unlist(strsplit(var1, ",")))
+  y <- as.numeric(unlist(strsplit(var2, ",")))
   
-  df <- data.frame(obs = c(1:3), x)
+  df <- data.frame(x, y)
   
-  print(ggplot2::ggplot(data = df, aes(obs, x)) + geom_point())
+  print(ggplot2::ggplot(data = df, aes(x, y)) + geom_point())
 }
 
 
