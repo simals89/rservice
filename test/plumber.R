@@ -1,4 +1,5 @@
 library(ggplot2)
+library(jsonlite)
 
 #' @apiTitle My R Service
 #' @apiDescription This service runs scalable R scripts on Google Cloud Run.
@@ -26,3 +27,17 @@ function(min = 0, max = 1){
 function(msg=""){
   "My R Service Deployed!"
 }
+
+
+# EXAMPLE 3
+#* Plot data
+#* @param data Data
+#* @get /plot
+#* @png
+function(data = NA){
+  
+  x <- data
+  
+  df <- data.frame(obs = c(1:3), x)
+  
+  print(ggplot2::ggplot(data = df, aes(obs, x)) + geom_point())
