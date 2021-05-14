@@ -41,3 +41,4 @@ function(data = c(1,4,8,10)){
   df <- data.frame(obs = c(1:4), x)
   
   print(ggplot2::ggplot(data = df, aes(obs, x)) + geom_point())
+}
