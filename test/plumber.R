@@ -14,9 +14,9 @@ function(min = 0, max = 1){
              min = as.numeric(min), 
              max = as.numeric(max))
   
-  df <- data.frame(obs = c(1:40), y = x)
+  df <- data.frame(obs = c(1:40), x)
   
-  plot(x)
+  ggplot(data = df, aes(obs, x)) + geom_point()
 
 }
 # EXAMPLE 1
