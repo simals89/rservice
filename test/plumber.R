@@ -34,11 +34,11 @@ function(msg=""){
 #* @param data Data
 #* @get /plot
 #* @png
-function(data = c(1,4,8,10)){
+function(data = '[[1.0], [4.0], [3.0]]'){
   
-  x <- data
+  x <- as.vector(fromJSON(json))
   
-  df <- data.frame(obs = c(1:4), x)
+  df <- data.frame(obs = c(1:3), x)
   
   print(ggplot2::ggplot(data = df, aes(obs, x)) + geom_point())
 }
