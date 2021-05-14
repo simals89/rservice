@@ -48,7 +48,7 @@ function(data = NA){
 #* Confirmation Message
 #* @get /hejsan
 #* @serializer print
-function(data = NA){
-  x <- as.numeric(unlist(strsplit(data, ",")))
+function(var1 = NA, var2 = NA){
+  x <- as.numeric(unlist(strsplit(var1, ",")))
   print(paste(x, collapse = " "))
 }
