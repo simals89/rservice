@@ -6,13 +6,16 @@
 #* @param max Upper limit of the distribution.
 #* @get /runif
 #* @png
+library("ggplot2")
 function(min = 0, max = 1){
   
   x <- runif(n = 40, 
              min = as.numeric(min), 
              max = as.numeric(max))
   
-  print(plot(x))
+  df <- data.frame(obs = c(1:40), x)
+  
+  print(ggplot(data = df, aes(x = obs, y = x)) + geom_point())
 
 }
 # EXAMPLE 1
