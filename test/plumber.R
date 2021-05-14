@@ -11,7 +11,8 @@ function(min = 0, max = 1){
   x <- runif(n = 40, 
              min = as.numeric(min), 
              max = as.numeric(max))
-  plot(x)
+  
+  print(plot(x))
 
 }
 # EXAMPLE 1
