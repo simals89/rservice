@@ -14,6 +14,8 @@ function(min = 0, max = 1){
              min = as.numeric(min), 
              max = as.numeric(max))
   
+  df <- data.frame(obs = c(1:40), y = x)
+  
   print(plot(x))
 
 }
