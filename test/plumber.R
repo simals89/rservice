@@ -16,7 +16,7 @@ function(min = 0, max = 1){
   
   df <- data.frame(obs = c(1:40), x)
   
-  ggplot(data = df, aes(obs, x)) + geom_point()
+  ggplot2::ggplot(data = df, aes(obs, x)) + geom_point()
 
 }
 # EXAMPLE 1
