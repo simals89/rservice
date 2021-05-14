@@ -1,3 +1,5 @@
+library(ggplot2)
+
 #' @apiTitle My R Service
 #' @apiDescription This service runs scalable R scripts on Google Cloud Run.
 # EXAMPLE 2
@@ -6,7 +8,6 @@
 #* @param max Upper limit of the distribution.
 #* @get /runif
 #* @png
-library("ggplot2")
 function(min = 0, max = 1){
   
   x <- runif(n = 40, 
@@ -15,7 +16,7 @@ function(min = 0, max = 1){
   
   df <- data.frame(obs = c(1:40), x)
   
-  print(ggplot(data = df, aes(x = obs, y = x)) + geom_point())
+  plot(x)
 
 }
 # EXAMPLE 1
