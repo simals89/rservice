@@ -49,7 +49,7 @@ function(chartTitle = NA, var1 = NA, var2 = NA){
 #* Plot data
 #* @param data Data
 #* @get /stapeldiagram
-#* @png
+#* @serializer png list(width = 647, height = 388)
 function(chartTitle = NA, x1 = NA, x2 = NA, y = NA){
   
   x1 <- as.character(unlist(strsplit(x1, ",")))
