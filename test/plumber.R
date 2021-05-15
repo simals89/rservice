@@ -52,7 +52,7 @@ function(chartTitle = NA, var1 = NA, var2 = NA){
 #* @png
 function(chartTitle = NA, var1 = NA, var2 = NA){
   
-  x <- as.numeric(unlist(strsplit(var1, ",")))
+  x <- as.character(unlist(strsplit(var1, ",")))
   y <- as.numeric(unlist(strsplit(var2, ",")))
   
   df <- data.frame(x, y)
