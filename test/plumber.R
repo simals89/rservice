@@ -50,12 +50,22 @@ function(chartTitle = NA, var1 = NA, var2 = NA){
 #* @param data Data
 #* @get /stapeldiagram
 #* @png
-function(chartTitle = NA, var1 = NA, var2 = NA){
+function(chartTitle = NA, x1 = NA, x2 = NA, y = NA){
   
-  x <- as.character(unlist(strsplit(var1, ",")))
-  y <- as.numeric(unlist(strsplit(var2, ",")))
+  x1 <- as.character(unlist(strsplit(x1, ",")))
+  x2 <- as.character(unlist(strsplit(x2, ",")))
+  y <- as.numeric(unlist(strsplit(y, ",")))
   
-  df <- data.frame(x, y)
+  df <- data.frame(x1, x2, y)
   
-  print(ggplot2::ggplot(data = df, aes(x, y)) + geom_bar(stat = "identity") + ggtitle(chartTitle) + theme_minimal())
+  print(
+    ggplot2::ggplot(data = df, aes(x = x1, y = y, fill = x1)) +
+    geom_bar(stat = "identity", width = 1) +
+    geom_text(aes(label = y), vjust = -0.25) +
+    facet_grid(~x2, switch = "x", scales = "free_x", space = "free_x") +
+    theme(panel.spacing = unit(0, "lines"),
+          strip.background = element_blank(),
+          strip.placement = "outside")
+  )
+  
 }
