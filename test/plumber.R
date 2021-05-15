@@ -63,6 +63,8 @@ function(chartTitle = NA, x1 = NA, x2 = NA, y = NA){
     geom_bar(stat = "identity", width = 1) +
     geom_text(aes(label = y), vjust = -0.25) +
     facet_grid(~x2, switch = "x", scales = "free_x", space = "free_x") +
+    ggtitle(chartTitle) +
+    theme_minimal() +
     theme(panel.spacing = unit(0, "lines"),
           strip.background = element_blank(),
           strip.placement = "outside")
