@@ -46,10 +46,16 @@ function(chartTitle = NA, var1 = NA, var2 = NA){
 
 
 # EXAMPLE 4
-#* Confirmation Message
-#* @get /hejsan
-#* @serializer print
-function(var1 = NA, var2 = NA){
+#* Plot data
+#* @param data Data
+#* @get /stapeldiagram
+#* @png
+function(chartTitle = NA, var1 = NA, var2 = NA){
+  
   x <- as.numeric(unlist(strsplit(var1, ",")))
-  print(paste(x, collapse = " "))
+  y <- as.numeric(unlist(strsplit(var2, ",")))
+  
+  df <- data.frame(x, y)
+  
+  print(ggplot2::ggplot(data = df, aes(x, y)) + geom_bar(stat = "identity") + ggtitle(chartTitle) + theme_minimal())
 }
